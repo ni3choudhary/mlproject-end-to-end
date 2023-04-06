@@ -8,6 +8,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionConfig:
@@ -44,7 +45,7 @@ class DataIngestion:
 
             )
         except Exception as e:
-            logging.info(CustomException(e,sys))
+            logging.exception(CustomException(e,sys))
             raise CustomException(e,sys)
         
 if __name__=="__main__":
@@ -53,3 +54,6 @@ if __name__=="__main__":
 
     data_transformation = DataTransformation()
     train_arr,test_arr,_ = data_transformation.initiate_data_transformation(train_data,test_data)
+    modeltrainer = ModelTrainer()
+    roc=modeltrainer.initiate_model_trainer(train_arr,test_arr)
+    print("ROC AUC SCORE IS: ", roc)

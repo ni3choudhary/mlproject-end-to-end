@@ -55,7 +55,7 @@ class DataTransformation:
 
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
-                ("onehot-encoder",OneHotEncoder(handle_unknown="ignore", sparse=False,drop='first'))
+                ("onehot-encoder",OneHotEncoder(handle_unknown="ignore",drop='first'))
                 ]
 
             )
@@ -75,7 +75,7 @@ class DataTransformation:
             return preprocessor
         
         except Exception as e:
-            logging.info(CustomException(e,sys))
+            logging.exception(CustomException(e,sys))
             raise CustomException(e,sys)
 
     def initiate_data_transformation(self,train_path,test_path):
@@ -131,5 +131,5 @@ class DataTransformation:
                 self.data_transformation_config.preprocessor_obj_file_path,
             )
         except Exception as e:
-            logging.info(CustomException(e,sys))
+            logging.exception(CustomException(e,sys))
             raise CustomException(e,sys)
