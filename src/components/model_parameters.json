@@ -1,0 +1,29 @@
+{   
+    "KNN":{
+        "n_neighbors": [3,5,7],
+        "weights" : ["uniform","distance"]
+    },
+    "SVM":{
+        "C": [0.01,0.1, 1, 10, 100, 1000], 
+        "kernel": ["rbf","linear"]
+    },
+    "Decision Tree": {
+        "max_depth": [2, 3, 5, 10, 20],
+        "min_samples_leaf": [5, 10, 20, 50, 100],
+        "criterion": ["gini", "entropy"]
+    },
+    "Random Forest":{
+        "criterion": ["gini", "entropy"],
+        "max_depth": [10,20,50],
+        "n_estimators": [100,200,500,1000,2000],
+        "bootstrap": [ true, false]
+    },
+    "XGBoost":{
+        "n_estimators": [100,200,500,1000,2000]
+    },
+    "CatBoost":{
+        "max_depth": [6,8,10],
+        "n_estimators": [100, 200, 300]
+    }
+    
+}
